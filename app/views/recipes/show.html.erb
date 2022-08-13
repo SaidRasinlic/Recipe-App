@@ -1,0 +1,37 @@
+<div class="mx-auto  w-[70%]">
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+<div id="<%= dom_id @recipe %>">
+  <p class="my-5 text-center text-3xl font-bold">
+    <%= @recipe.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="font-bold mb-1">Preparation time:</strong>
+    <%= @recipe.preparation_time %>
+    <span class="float-right">Public</span>
+  </p>
+
+  <p class="my-5">
+    <strong class="font-medium mb-1">Cooking time:</strong>
+    <%= @recipe.cooking_time %>
+  </p>  
+  <p class="font-bold py-2">Steps go here...</p> 
+  </div> 
+
+    <div class="flex justify-between p-2 text-xl">
+    <div class="border-gray-900 p-2 border-4 my-3 rounded-sm">
+          <%= link_to 'Generate shopping list', shoppings_path %>
+    </div>
+    <div class="border-gray-900 p-2 border-4 my-3 rounded-sm">
+      <%= link_to 'Add ingredient', new_recipe_recipe_food_path(:recipe_id => @recipe.id)%>
+    </div>
+    </div>
+  </div>
+  <%= render "shared/show_recipe", recipe: @recipe%>
+</div>
+
+

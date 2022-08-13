@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsRecipeApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+     <script src="https://cdn.tailwindcss.com"></script>
+    
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <%= render "shared/header" %>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+    <div>
+
+    <%= render "shared/footer" %>
+    </div>
+  </body>
+</html>
