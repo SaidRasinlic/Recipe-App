@@ -1,0 +1,49 @@
+
+
+<div class="flex flex-col w-[80%] mx-auto mt-16">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="overflow-hidden">
+        <table class="min-w-full">
+          <thead class="border-b bg-indigo-100 border-indigo-200">
+            <tr>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Food
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Measurement Unit
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+               Unit Price
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+           <% if recipe.foods.blank? %>
+             <h4 class="text-center">No foods available!</h4>
+           <% else %>
+
+            <% recipe.recipe_foods.each do |recipe_food| %>
+            <tr class="border-b">
+              <td scope="row" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= recipe_food.food.name %></td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <%= "#{recipe_food.quantity} #{recipe_food.food.measurement_unit}" %>
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+               <%= "$ #{recipe_food.quantity * recipe_food.food.price}" %>
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+               <button>Modify / Remove </button>
+              </td>
+            </tr>
+              <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

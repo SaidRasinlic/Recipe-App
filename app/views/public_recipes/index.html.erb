@@ -1,0 +1,18 @@
+<section class="m-6 text-center">
+    <h1 class="font-bold text-2xl m-2">Public Recipes</h1>
+    <% @public_recipes.each do |public_recipe| %>
+        <div class="flex justify-center align-center  border p-4 m-2">
+            <% if public_recipe.public == "public" %>
+                <div class="w-full">
+                    <h2><%= public_recipe.name %></h2>
+                    <p class="font-bold italic"><%= public_recipe.user.email %></p>
+                </div>
+                <div class="w-full">
+                    <h4>Total food items: <%= public_recipe.recipe_foods.count %></h4>
+                    <p>Total Price: $<%= @total_price %></p>                    
+                </div>
+                
+            <% end %>
+        </div>
+    <% end %>    
+</section>
