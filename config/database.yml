@@ -1,5 +1,3 @@
-# PostgreSQL. Versions 9.3 and up are supported.
-#
 # Install the pg driver:
 #   gem install pg
 # On macOS with Homebrew:
@@ -17,9 +15,6 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: said_rasinlic
-  password: StarBoyG
-
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -27,14 +22,16 @@ default: &default
 development:
   <<: *default
   database: recipe_app_development
-  username: said_rasinlic
+  username: <%= ENV["RECIPE_APP_DATABASE_USERNAME"] %>
 
+  # The password associated with the postgres role (username).
+  password: <%= ENV["RECIPE_APP_DATABASE_PASSWORD"] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: Rails_recipe_app
+  #username: myapp
 
   # The password associated with the postgres role (username).
   #password:
@@ -63,7 +60,10 @@ development:
 test:
   <<: *default
   database: recipe_app_test
-  username: said_rasinlic
+  username: <%= ENV["RECIPE_APP_DATABASE_USERNAME"] %>
+
+  # The password associated with the postgres role (username).
+  password: <%= ENV["RECIPE_APP_DATABASE_PASSWORD"] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -88,4 +88,5 @@ test:
 production:
   <<: *default
   database: recipe_app_production
-  username: said_rasinlic
+  username: <%= ENV["RECIPE_APP_DATABASE_USERNAME"] %>
+  password: <%= ENV["RECIPE_APP_DATABASE_PASSWORD"] %>
