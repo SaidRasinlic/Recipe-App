@@ -1,0 +1,54 @@
+<h3 class="text-2xl text-center m-4 font-bold underline">All Foods</h1>
+  <div class="border flex p-2 w-[80%] mx-auto">
+    <button class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded '>
+      <%= link_to 'Add new food', new_food_path %>
+    </button> 
+  </div>
+<div class="flex flex-col w-[80%] mx-auto">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="overflow-hidden">
+        <table class="min-w-full">
+          <thead class="border-b bg-indigo-100 border-indigo-200">
+            <tr>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Food
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Measurement Unit
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Quantity
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+               Unit Price
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+             <% @foods.each do |food| %>
+            <tr class="border-b">
+              <td scope="row" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= food.name %></td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <%= food.measurement_unit %> 
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <%= food.quantity %> 
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                $<%= food.price %>
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+               <%= button_to "Delete", food_path(food.id ), :method => :delete, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %> 
+              </td>
+            </tr>
+              <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="w-full mt-2">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between mt-4 items-center">
+    <h1 class="font-bold text-2xl text-center ml-32">Recipes</h1>
+    <%= link_to 'Add New recipe', new_recipe_path, class: "mr-12 rounded-lg py-2 px-4 bg-blue-600 text-white block font-medium" %>
+  </div>
+
+  <div id="recipes" class="min-w-full">
+    <%= render @recipes %>
+  </div>
+</div>

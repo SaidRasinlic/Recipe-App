@@ -1,0 +1,45 @@
+<h3 class="text-2xl text-center m-4 font-bold underline">Shopping List</h1>
+  <div class="border flex p-2 w-[80%] mx-auto">
+   <div >
+    <h3 class="font-bold" >Amount of food items to buy: <%= @food_amount %></h3>
+    <h3 class="font-bold" >Total value of food needed: $<%= @total_price %></h3>
+  </div>
+  </div>
+<div class="flex flex-col w-[80%] mx-auto">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="overflow-hidden">
+        <table class="min-w-full">
+          <thead class="border-b bg-indigo-100 border-indigo-200">
+            <tr>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Food
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                Quantity
+              </th>
+              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+               Price
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+              <% @recipe_foods.each do |recipe_food| %>
+             <% recipe_food.each do |recipe_food2| %>
+            <tr class="border-b">
+              <td scope="row" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%= recipe_food2.food.name %></td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <%= recipe_food2.quantity %> 
+              </td>
+              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                $<%= recipe_food2.food.price*recipe_food2.quantity %>
+              </td>
+            </tr>
+             <% end %>
+             <%end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

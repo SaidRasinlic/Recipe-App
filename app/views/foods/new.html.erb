@@ -1,0 +1,26 @@
+<section class="w-[80%] mx-auto">
+  <h3 class="text-2xl font-bold text-center"> Add Food</h3>
+  <%= form_with url: foods_path, scope: :food do |form| %>
+    <div class="">
+    <%= form.label :Name, class:"form-label" %><br>
+    <%= form.text_field :name, placeholder: "Type a food", class: 'w-full border border-gray-200 py-2', require: true %>
+    </div>
+
+    <div class="">
+    <%= form.label :Measurement_Unit, "Measurement Unit (kg, g, mg):" ,class:"form-label" %><br>
+    <%= form.text_field :measurement_unit, placeholder: "Type a unit", class: 'w-full border border-gray-200 py-2', require: true %>
+    </div>
+
+    <div class="">
+    <%= form.label :Quantity, class:"form-label" %><br>
+    <%= form.text_field :quantity, placeholder: "Type a number", class: 'w-full border border-gray-200 py-2', require: true %>
+    </div>
+
+    <div class="">
+    <%= form.label :Price, class:"form-label" %><br>
+    <%= form.number_field :price, placeholder: "Type a number", class: 'w-full border border-gray-200 py-2 mb-2', require: true %>
+    </div>
+
+    <%= form.submit "Submit", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 roundedn" %>
+  <% end %>
+</section>
