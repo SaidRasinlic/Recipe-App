@@ -95,7 +95,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    diff-lcs (1.5.0)
     erubi (1.11.0)
+    ffi (1.15.5-x64-mingw-ucrt)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -183,6 +185,23 @@ GEM
       actionpack (>= 5.0)
       railties (>= 5.0)
     rexml (3.2.5)
+    rspec-core (3.11.0)
+      rspec-support (~> 3.11.0)
+    rspec-expectations (3.11.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.11.0)
+    rspec-mocks (3.11.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.11.0)
+    rspec-rails (6.0.0)
+      actionpack (>= 6.1)
+      activesupport (>= 6.1)
+      railties (>= 6.1)
+      rspec-core (~> 3.11)
+      rspec-expectations (~> 3.11)
+      rspec-mocks (~> 3.11)
+      rspec-support (~> 3.11)
+    rspec-support (3.11.1)
     rubocop (1.36.0)
       json (~> 2.3)
       parallel (~> 1.10)
@@ -249,12 +268,14 @@ DEPENDENCIES
   capybara
   debug
   devise
+  ffi (~> 1.15, >= 1.15.5)
   importmap-rails
   jbuilder
   letter_opener
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.4)
+  rspec-rails (~> 6.0.0)
   rubocop (>= 1.0, < 2.0)
   selenium-webdriver
   sprockets-rails
