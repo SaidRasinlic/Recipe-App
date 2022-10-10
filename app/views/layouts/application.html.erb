@@ -13,8 +13,8 @@
   <body>
   
   <% if user_signed_in?%>
-    <%= button_to link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-    <h1>Welcome home</h1>
+    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+    
  <% else %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
