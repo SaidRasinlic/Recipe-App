@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :recipe_foods
+  resources :recipes
+  resources :inventory_foods
+  resources :foods
+  resources :inventories
   devise_for :users
 
   devise_scope :user do
