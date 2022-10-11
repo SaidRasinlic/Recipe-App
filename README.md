@@ -1,6 +1,6 @@
 [![](https://img.shields.io/badge/Microverse-Dozie%20Udeagha-blueviolet)](https://github.com/udeaghad)
 [![](https://img.shields.io/badge/Microverse-Said%20Rašinlić-violet)](https://github.com/SaidRasinlic)
-[![](https://img.shields.io/badge/Microverse-Bright%20Kweku%Ahiadeke-cyan)](https://github.com/kwekubright)
+[![](https://img.shields.io/badge/Microverse-Bright%20Kweku%20Ahiadeke-cyan)](https://github.com/kwekubright)
 # Recipe-App
 
 > The Recipe app keeps track of all your recipes, ingredients, and inventory. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them.
