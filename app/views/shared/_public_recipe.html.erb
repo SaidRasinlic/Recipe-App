@@ -1,0 +1,10 @@
+<div class="max-w-sm w-full min-w-full lg:max-w-full flex mb-4">
+  <div class="w-1/3 border border-r-0 border-gray-400 bg-white rounded-l p-4 flex flex-col justify-between leading-normal">
+    <%= link_to public_recipe.name, recipe_path(public_recipe.id), class: "text-gray-900 font-bold text-xl mb-2" %>
+    <h3 class="text-gray-900 font-bold"> <%= public_recipe.user.name %> </h3>
+  </div>
+  <div class="w-2/3 border border-l-0 border-gray-400 bg-white rounded-r p-4 flex flex-col justify-between leading-normal">
+    <p class="text-gray-700 text-base">Total food items: <%= count_items(public_recipe.foods)%> </p>
+    <p class="text-gray-700 text-base">Total food items: $<%= total_price(public_recipe)%> </p>
+  </div>
+</div>

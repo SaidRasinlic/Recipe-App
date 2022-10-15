@@ -1,0 +1,36 @@
+<div class="w-full">
+  <div class="flex justify-between">
+    <h1 class="font-bold text-4xl">Shopping List</h1>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+    <div>Amount of food to buy: <%= @shopping_list.length %> items</div>
+    <div>Total value of food needed: <%=number_to_currency( @shopping_list.map { |item| item[:price]}.sum )%></div>
+    <div>Recipe: <%= link_to @recipe.name, recipe_path(@recipe.id), class: "underline text-blue-500" %></div>
+    <div>Inventory: <%= link_to @inventory.name, inventory_path(@inventory.id), class: "underline text-blue-500" %></div>
+  </div>
+  <div class="mt-6 relative md:overflow-hidden overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm rounded text-center">
+      <thead class="text-white">
+        <tr class="bg-teal-700">
+          <th class="px-4 py-2 text-center"><%= link_to "Food", :sort => "food"%> </th>
+          <th class="px-4 py-2 text-center"><%= link_to "Quantity", :sort => "quantity"%> </th>
+          <th class="px-4 py-2 text-center"><%= link_to "Price", :sort => "price"%> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @shopping_list.each do |food| %>
+          <tr>
+            <td class="border px-4 py-2"><%= food[:name] %></td>
+            <td class="border px-4 py-2"><%= food[:quantity] %></td>
+            <td class="border px-4 py-2">  <%= number_to_currency(food[:price])  %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% flash.each do |type, msg| %>
+    <div class="alert alert-<%= type %>">
+      <%= msg %>
+    </div>
+  <% end %>
+</div>

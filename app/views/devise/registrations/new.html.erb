@@ -1,34 +1,37 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<div class="w-full">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+    <h2 class="font-bold text-4xl py-5">Sign up</h2>
+    <div class="border p-7 flex flex-col gap-2">
+      <div>
+        <%= f.label :name , class: 'font-medium block' %>
+        <%= f.text_field :name, autofocus: true, class: 'border rounded' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.email_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div>
+        <%= f.label :email , class: 'font-medium block' %>
+        <%= f.email_field :email, autocomplete: "email", class: 'border rounded' %>
+      </div>
+    <div>
+      <%= f.label :password, class: 'font-medium block' %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %> </br>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'border rounded' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div>
+        <%= f.label :password_confirmation , class: 'font-medium block' %>
+        <%= f.text_field :password_confirmation, autocomplete: "new-password", class: 'border rounded' %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+    <div class="actions">
+      <%= f.submit "Sign up",  class: 'text-sm px-4 py-2 bg-transparent hover:bg-teal-500 text-teal-700 max-w-fit font-semibold hover:text-white border border-teal-500 hover:border-transparent rounded'  %>
+    </div>
+  <% end %>
+  <div class="flex justify-between text-blue-500 underline">
+  <%= render "devise/shared/links" %>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>

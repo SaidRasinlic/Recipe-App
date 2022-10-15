@@ -1,0 +1,41 @@
+<div class="w-full">
+  <div class="flex flex-wrap justify-between items-baseline gap-7 mb-6">
+    <h1 class="font-bold text-4xl">Food List</h1>
+    <%=
+      link_to "Add Food",
+      new_food_path,
+      class: "text-sm px-4 py-2 leading-none bg-transparent hover:bg-teal-500 text-teal-700 justify-center font-semibold hover:text-white border border-teal-500 hover:border-transparent rounded"
+    %>
+  </div>
+  <% if @foods.empty? %>
+    <p class="border p-7 border-yellow-400 bg-yellow-200 font-medium">You don't have any food.</p>
+  <% else %>
+    <div class="relative md:overflow-hidden overflow-x-auto shadow-md sm:rounded-lg">
+      <table class="w-full text-sm rounded text-center">
+        <thead class="text-white" >
+          <tr class="bg-teal-700">
+            <th class="px-4 py-2 text-center"><%= link_to "Food", :sort => "food"%> </th>
+            <th class="px-4 py-2 text-center"><%= link_to "Measurement unit", :sort => "measurement_unit"%> </th>
+            <th class="px-4 py-2 text-center"><%= link_to "Unit Price", :sort => "avg_ranking"%> </th>
+            <th class="px-4 py-2 text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="text-center">
+          <% @foods.each do |food| %>
+            <tr>
+              <td class="px-4 py-2 border"><%= food.name %></td>
+              <td class="px-4 py-2 border"><%= food.measurement_unit %></td>
+              <td class="px-4 py-2 border"><%= number_to_currency(food.price) %></td>
+              <td class="px-4 py-2 border">
+                <%=
+                  button_to "Delete", food_path(food.id), method: :delete,
+                  class: "text-sm px-4 py-2 leading-none bg-transparent hover:bg-red-500 text-red-700 justify-center font-semibold hover:text-white border border-red-500 hover:border-transparent rounded"
+                %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

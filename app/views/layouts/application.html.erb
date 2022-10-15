@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RecipeApp</title>
+    <title>Recipe-App</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
-  
-  <% if user_signed_in?%>
-    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-    
- <% else %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
- <% end %>
-
-    <%= yield %>
+    <header> <%= render partial: "shared/navbar" %>
+    </header>
+    <div class="mx-auto">
+      <div class="w-full" x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)">
+        <% flash.each do |type, msg| %>
+          <% if type === 'notice' %>
+            <div class="mx-auto bg-green-200">
+              <p class="container mx-auto py-3 px-10"><%= msg %></p>
+            </div>
+          <% elsif type === 'success' %>
+            <div class="mx-auto bg-green-200">
+              <p class="container mx-auto py-3 px-10"><%= msg %></p>
+            </div>
+          <% elsif type === 'fail' %>
+            <div class="mx-auto bg-red-200">
+              <p class="container mx-auto py-3 px-10"><%= msg %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <main class="container mx-auto mt-6 px-5 flex">
+      <%= yield %>
+    </main>
   </body>
 </html>

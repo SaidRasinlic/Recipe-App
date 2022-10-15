@@ -1,0 +1,12 @@
+<tr>
+  <td class="border px-4 py-2"> <%= recipe_food.food.name %></td>
+  <td class="border px-4 py-2"><%= recipe_food.quantity %> <%= recipe_food.food.measurement_unit %></td>
+  <td class="border px-4 py-2"><%= recipe_food.food.price * recipe_food.quantity %></td>
+  <% if recipe_food.recipe.user == current_user %>
+    <td class="border px-4 py-2 ">
+      <div class="flex flex-row justify-around min-h-full gap-2">
+        <%= link_to "Remove", recipe_recipe_food_path(recipe_food.recipe_id, recipe_food.id), data: { "turbo-method": :delete }, class: "flex bg-transparent text-sm hover:bg-red-500 text-red-700 justify-center font-semibold hover:text-white p-1 px-4 border border-red-500 hover:border-transparent rounded"%>
+      </div>
+    </td>
+  <% end %>
+</tr>

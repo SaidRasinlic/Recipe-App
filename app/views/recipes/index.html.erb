@@ -1,0 +1,17 @@
+<div class="flex flex-col container mx-auto min-w-full">
+  <div class="flex justify-between items-baseline mb-6">
+    <h1 class="font-bold text-4xl"> <%= @current_user.name %>'s Recipes</h1>
+    <% if user_signed_in? %>
+      <%= 
+        link_to "New Recipe", 
+        new_recipe_path,
+        class: "text-sm px-4 py-2 leading-none bg-transparent hover:bg-teal-500 text-teal-700 justify-center font-semibold hover:text-white border border-teal-500 hover:border-transparent rounded"
+      %>
+    <% end %>
+  </div>
+  <% if @recipes.empty? %>
+    <p class="border p-7 border-yellow-400 bg-yellow-200 font-medium">You don't have any recipes.</p>
+  <% else %>
+    <%= render partial: "shared/recipe", collection: @recipes %>
+  <% end %>
+</div>

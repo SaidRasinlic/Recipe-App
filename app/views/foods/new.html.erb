@@ -1,0 +1,29 @@
+<section class="container">
+  <h4 class="font-bold text-2xl"> New Food</h4>
+  <% if @food.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@food.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% @food.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form_with model: @food, url: foods_path, local: true do |form| %>
+    <div class="flex flex-col pt-4">
+      <%= form.label :name, class: 'block text-sm font-medium text-gray-700 my-1' %>
+      <%= form.text_field :name, class: 'focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-md sm:text-sm border-gray-300 mb-1' %>
+      <%= form.label :measurement_unit, class: 'block text-sm font-medium text-gray-700 my-1' %>
+      <%= form.text_field :measurement_unit, class: 'focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-md sm:text-sm border-gray-300 mb-1' %>
+      <%= form.label :price, class: 'block text-sm font-medium text-gray-700 my-1' %>
+      <%= form.text_field :price, class: 'focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-md sm:text-sm border-gray-300 mb-1' %>
+    </div>
+    <div class="flex justify-evenly my-2 w-full">
+    <%= link_to "Back to foods", foods_path, class: "text-sm font-semibold bg-red-500 text-white font-bold py-2 px-4 rounded"%>
+    <%= form.submit "Create Food" , class: 'text-sm px-4 py-2 bg-transparent hover:bg-teal-500 text-teal-700 max-w-fit font-semibold hover:text-white border border-teal-500 hover:border-transparent rounded' %>
+    </div>
+  <% end %>
+</section>
+

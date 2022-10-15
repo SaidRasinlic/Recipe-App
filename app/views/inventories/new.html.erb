@@ -1,0 +1,21 @@
+<div class="w-full">
+  <h1 class="font-bold text-4xl">New Inventory</h1>
+  <div class="mt-14">
+    <%= form_with model: @inventory, url: inventories_path, local: true, html: {"data-turbo": "false"} do |form| %>
+      <% if @inventory.errors.any? %>
+        <div class="border px-7 py-3 mb-4 border-red-400 bg-red-200 font-medium">
+          <% @inventory.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="border p-7 flex flex-col gap-7">
+        <div>
+          <%= form.label :name, class: 'font-medium block mb-2' %>
+          <%= form.text_field :name, class: 'border rounded' %>
+        </div>
+        <%= form.submit "Submit", class: 'text-sm px-4 py-2 bg-transparent hover:bg-teal-500 text-teal-700 max-w-fit font-semibold hover:text-white border border-teal-500 hover:border-transparent rounded' %>
+      </div>
+    <% end %>
+  </div>
+</div>

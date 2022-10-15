@@ -1,0 +1,30 @@
+<div class="w-full">
+  <h1 class="font-bold text-4xl">New Inventory Item</h1>
+  <div class="mt-14">
+    <%= form_with model: @inventory_food, url: inventory_foods_path(@inventory.id), local: true, html: {"data-turbo": "false"} do |form| %>
+      <% if @inventory_food.errors.any? %>
+        <div class="border px-7 py-3 mb-4 border-red-400 bg-red-200 font-medium">
+          <% @inventory_food.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="border p-7 flex flex-col gap-7">
+        <div>
+          <%= form.label :quantity, class: 'font-medium block mb-2' %>
+          <%= form.number_field :quantity, class: 'border rounded' %>
+        </div>
+        <div>
+          <%= form.label :food_id, class: 'font-medium block mb-2' %>
+          <%= form.select :food_id, options_from_collection_for_select(@available_food, "id", "name"), {}, { class: "border rounded" } %>
+        </div>
+        <%= form.submit "Submit", class: 'text-sm px-4 py-2 bg-transparent hover:bg-teal-500 text-teal-700 max-w-fit font-semibold hover:text-white border border-teal-500 hover:border-transparent rounded' %>
+        <div>
+          <p>
+            Food is not in the list? Add one <%= link_to 'here', new_food_path, class: "text-teal-500 hover:text-teal-700" %>.
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

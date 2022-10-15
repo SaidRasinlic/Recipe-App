@@ -1,0 +1,28 @@
+<div class="w-full">
+  <div class="flex flex-wrap justify-between items-baseline gap-7 mb-6">
+    <h1 class="font-bold text-4xl">Your Inventories</h1>
+    <% if user_signed_in? %>
+      <%= 
+        link_to "New inventory",
+        new_inventory_path,
+        class: "text-sm px-4 py-2 leading-none bg-transparent hover:bg-teal-500 text-teal-700 justify-center font-semibold hover:text-white border border-teal-500 hover:border-transparent rounded"
+      %>
+    <% end %>
+  </div>
+  <% if @inventories.empty? %>
+    <p class="border p-7 border-yellow-400 bg-yellow-200 font-medium">You don't have any inventories.</p>
+  <% else %>
+    <div class="flex flex-col gap-7"> 
+      <% @inventories.each do |inventory| %>
+        <div class="border rounded border-gray-400 p-7 font-bold text-xl flex justify-between items-baseline">
+          <%= link_to inventory.name, inventory_path(inventory.id) , class: "hover:text-teal-700" %>
+          <%= 
+            button_to "Delete", 
+            inventory_path(inventory.id), method: :delete,
+            class: "text-sm px-4 py-2 leading-none bg-transparent hover:bg-red-500 text-red-700 justify-center font-semibold hover:text-white border border-red-500 hover:border-transparent rounded"
+          %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
