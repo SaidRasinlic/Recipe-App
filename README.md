@@ -31,11 +31,16 @@ To get a local copy up and running follow these simple example steps.
 - Run **rails db:migrate**
 
 ### Usage
-- navigate to the directory **recipe-app**
-- Run **bundle install** on your terminal
+- navigate to the directory **cd Recipe-app** (case sensitive)
+- Run **bundle install** on your terminal (in case you need to update gems run **bundle update**)
+- To setup database and tailwind run the following commands:
+  - `rails db:create`
+  - `rails db:migrate`
+  - `rails db:seed` (to populate initial data from db/seeds.rb file)
+  - `rails tailwindcss:build` (to build necessary configurations for tailwind)
 - Run **rails s** on your terminal
-- Enter **http://localhost:3000/** on your browser to view page
-
+- Enter **http://localhost:3000/ or localhost:3000** on your browser to view page
+- **Congratulations!!! App should run successfully.**
 ## Authors
 
 👤 **Dozie Udeagha**
