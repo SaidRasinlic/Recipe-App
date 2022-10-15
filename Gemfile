@@ -35,6 +35,8 @@ gem 'jbuilder'
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
+gem 'ffi'
+
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
@@ -69,7 +71,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
-  gem 'rspec-rails', '~> 5.1'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
@@ -77,3 +78,14 @@ end
 gem 'tailwindcss-rails', '~> 2.0'
 
 gem 'devise', '~> 4.8'
+
+group :development, :test do
+  # Add Should mathcers gem to help with model testing
+  gem 'shoulda-matchers', '~> 3.1'
+
+  # Add Database Cleaner to clear DB for most test cases
+  gem 'database_cleaner'
+
+  # Add rspec-rails for testing
+  gem 'rspec-rails'
+end
