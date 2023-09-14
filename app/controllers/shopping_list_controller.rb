@@ -2,6 +2,7 @@
 
 # Shopping List Controller
 class ShoppingListController < ApplicationController
+  include ShoppingListHelper
   def index
     @recipe, @recipe_ingredients = fetch_recipe
     @inventory, @inventory_quantities = fetch_inventory || []
