@@ -36,3 +36,4 @@
 /config/local_env.yml
 /package-lock.json
 /Procfile.dev
+/render.yaml
