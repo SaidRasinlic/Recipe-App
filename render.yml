@@ -1,0 +1,25 @@
+services:
+  - type: redis
+    name: cache
+    ipAllowList: []
+    plan: free 
+    maxmemoryPolicy: allkeys-lfu
+  - type: web
+    name: recipe_app
+    plan: free
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: bundle exec rails s
+    envVars:
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: recipe_app_prod
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: cache
+          property: connectionString
+          
